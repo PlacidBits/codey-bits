@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Revealing Module + Angular</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+		    Main content! Non-angular pieces of our app can go here.
+		    <div class="angularApp" ng-app="myApp">
+		        <div ng-controller="MyController as vm">
+		            {{ vm.message }}
+		        </div>
+		    </div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+		<script src="myModule.js"></script>		
+	</body>
+</html>
