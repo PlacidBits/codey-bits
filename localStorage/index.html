@@ -1,0 +1,68 @@
+<!DCOTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		Name:
+		<input type="text" id="myInput" />
+		<br />
+		<button type="button" onclick="addToLocalStorage()">Add to localStorage</button>
+		<br />
+		<br />
+		<table>
+		    <thead>
+		        <th>Notation</th>
+		        <th>Value from localStorage</th>
+		    </thead>
+		    <tbody>
+		        <tr>
+		            <td>Method Calling</td>
+		            <td> 
+						<span id="methodCallValue"></span>		
+		            </td>
+		        </tr>
+		        <tr>
+		            <td>Array Notation</td>
+		            <td> 
+						<span id="arrayValue"></span>		
+		            </td>
+		        </tr>
+		        <tr>
+		            <td>Object Notation</td>
+		            <td> 
+						<span id="objectValue"></span>		
+		            </td>
+		        </tr>
+		    </tbody>
+		</table>
+		<button type="button" onclick="clearLocalStorage()">Clear localStorage</button>
+		
+		<script>
+			var myInput = document.querySelector("#myInput");
+			var mySpan = document.querySelector("#mySpan");
+			
+			function addToLocalStorage() {
+			    //Method Calling
+			    localStorage.setItem("name", myInput.value);
+			    //Array Notation
+			    localStorage["arrayName"] = myInput.value;
+			    //Object notation
+			    localStorage.propertyName = myInput.value;
+			
+			    updateUI();
+			}
+			
+			function clearLocalStorage() {
+			    localStorage.clear();
+			
+			    updateUI();
+			}
+			
+			function updateUI() {
+			    document.querySelector("#methodCallValue").innerHTML = localStorage.getItem("name");
+			    document.querySelector("#arrayValue").innerHTML = localStorage["arrayName"];
+			    document.querySelector("#objectValue").innerHTML = localStorage.propertyName;
+			}
+		</script>			
+	</body>
+</html>
