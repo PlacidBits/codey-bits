@@ -1,0 +1,22 @@
+{
+  "name": "codey-bits",
+  "version": "1.0.0",
+  "description": "codey-bits\r ==========",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PlacidBits/codey-bits.git"
+  },
+  "author": "Jonathan Carter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PlacidBits/codey-bits/issues"
+  },
+  "homepage": "https://github.com/PlacidBits/codey-bits#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

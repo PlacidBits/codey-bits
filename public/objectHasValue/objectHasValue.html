@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>objectHasValue</title>
+</head>
+
+<body>
+    Have a look at the dev tools console to see how the following evaluates:
+
+    <code>
+        <pre>
+            const myThing = {
+                value1: "foo",
+                value2: {
+                    subValue1: "bar",
+                    subValue2: {
+                        subSubValue1: "fizz"
+                    }
+                }
+            };
+
+            console.log("Has foo? " + objectHasValue(myThing, "foo"));
+            console.log("Has fizz? " + objectHasValue(myThing, "fizz"));
+        </pre>
+    </code>
+
+    <script src="/bower_components/moment/min/moment.min.js"></script>
+    <script>
+        (function () {
+            const myThing = {
+                value1: "foo",
+                value2: {
+                    subValue1: "bar",
+                    subValue2: {
+                        subSubValue1: "fizz"
+                    }
+                }
+            };
+
+            console.log("Has foo? " + objectHasValue(myThing, "foo"));
+            console.log("Has fizz? " + objectHasValue(myThing, "fizz"));
+        })();
+
+        function objectHasValue(object, value) {
+            const objectValues = Object.values(object);
+            for (let i = 0; i < objectValues.length; i++) {
+                const val = objectValues[i];
+                switch (typeof val) {
+                    case 'number':
+                        if (val.toString().includes(value)) {
+                            return true;
+                        }
+                        break;
+                    case 'string':
+                        if (val.toLowerCase().includes(value.toLowerCase())) {
+                            return true;
+                        }
+                        break;
+                    case 'object':
+                        //try as a date
+                        if (moment(val).isValid()
+                            && moment(val).format('MM/DD/YYYY').includes(value)) {
+                            return true;
+                        } else {
+                            //must be an object with its own properties. recurse                    
+                            if (this.objectHasValue(val, value)) { //only return for true. otherwise ignore
+                                return true;
+                            }
+                        }
+                        break;
+                    default: break;
+                }
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>

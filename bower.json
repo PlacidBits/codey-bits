@@ -1,0 +1,21 @@
+{
+  "name": "codey-bits",
+  "homepage": "https://placidbits.com",
+  "authors": [
+    "Jonathan Carter <jon@placidbits.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "^2.20.1"
+  }
+}
